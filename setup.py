@@ -23,9 +23,9 @@ tests_require = [
 ]
 
 setup(
-    name='briefme-filter',
+    name='briefme-validator',
     version='0.1',
-    description='A filter validation.',
+    description='A simple validator.',
     long_description='''
 A simple validator, check mail for example.
 ''',
