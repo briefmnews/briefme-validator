@@ -48,7 +48,7 @@ A simple validator, check mail for example.
     packages=find_packages(),
     include_package_data=False,
     install_requires=[
-        'dnsquery'
+        'dnspython'
     ],
     entry_points={
         'console_scripts': [
