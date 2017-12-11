@@ -7,78 +7,96 @@ from dns.resolver import (
 from validator.constants import DISPOSABLE_EMAIL_DOMAINS, PHISHING_DOMAINS
 
 
-def _validate_more_consonne(word):
-    return bool(re.search('[bcdfghjklmnpqrstvwxyz]{5}', word, re.IGNORECASE))
+class InvalidFormat(Exception):
+    pass
 
 
-def _validate_more_vowel(word):
-    return bool(re.search('[aeiouy]{3}', word, re.IGNORECASE))
+class DisposableDomain(Exception):
+    pass
 
 
-def _validate_more_number(word):
-    return bool(re.search('[0-9]{5}', word))
+class PhisingDomain(Exception):
+    pass
 
 
-def validate_mail(mail):
-    """To validate the mail if the mail is invalid the return value is none.
+class MailValidator(object):
+    """To validate mail format"""
+    def __init__(self, mail):
+        """To validate the mail validator class.
 
-    @param mail: The mail
-    @type mail: str
+        @param mail:  The mail
+        @type mail: str
 
-    @return: The mail
-    @rtype : str
-    """
-    name = mail.split('@')[0]
-    domain = mail.split('@', 1)[-1]
+        @raise InvalidFormat: The mail is invalid or contain invalid word
+        @raise DisposableDomain: The mail is disposable
+        @raise PhisingDomain: The mail is a phising domain
+        """
+        self.name = mail.split('@')[0]
+        self.domain = mail.split('@', 1)[-1]
 
-    if '@' in domain:
-        return None
+        if '@' in self.domain:
+            raise InvalidFormat('The format of the mail is not valid')
 
-    if name in ('postmaster', 'abuse'):
-        return None
+        if self.name in ('postmaster', 'abuse'):
+            raise InvalidFormat('A postmaster or an abuse mail is not valid')
 
-    if domain in DISPOSABLE_EMAIL_DOMAINS:
-        return None
+        if self.domain in DISPOSABLE_EMAIL_DOMAINS:
+            raise DisposableDomain('Disposable mail is not authorized')
 
-    if domain in PHISHING_DOMAINS:
-        return None
+        if self.domain in PHISHING_DOMAINS:
+            raise PhisingDomain('Seems a phising domain')
 
-    try:
-        query(domain, 'MX')
-    except (Timeout, NXDOMAIN, YXDOMAIN, NoAnswer, NoNameservers):
-        return None
+    @staticmethod
+    def _validate_more_consonne(word):
+        return bool(
+            re.search('[bcdfghjklmnpqrstvwxyz]{5}', word, re.IGNORECASE))
 
-    return mail
+    @staticmethod
+    def _validate_more_vowel(word):
+        return bool(re.search('[aeiouy]{3}', word, re.IGNORECASE))
 
+    @staticmethod
+    def _validate_more_number(word):
+        return bool(re.search('[0-9]{5}', word))
 
-def extra_validate_mail_rules(mail):
-    """To validate the mail if the mail is invalid the return value is none.
+    def validate_mail(self):
+        """To validate the mail if the mail is invalid the return value is none.
 
-    @param mail: The mail
-    @type mail: str
+        @param mail: The mail
+        @type mail: str
 
-    @return: The mail
-    @rtype : str
-    """
-    name = mail.split('@')[0]
-    domain = mail.split('@', 1)[-1]
+        @return: The mail
+        @rtype : str
+        """
+        try:
+            query(self.domain, 'MX')
+        except (Timeout, NXDOMAIN, YXDOMAIN, NoAnswer, NoNameservers):
+            return False
 
-    if len(name) < 5:
-        return None
+        return True
 
-    if _validate_more_consonne(name) or _validate_more_consonne(domain):
-        return None
+    def extra_validate_mail_rules(self):
+        """To validate the mail if the mail is invalid the return value is none.
 
-    if _validate_more_vowel(name) or _validate_more_vowel(domain):
-        return None
+        @param mail: The mail
+        @type mail: str
 
-    if _validate_more_number(name) or _validate_more_number(domain):
-        return None
+        @return: The mail
+        @rtype : str
+        """
+        if len(self.name) < 5 or 'spam' in self.name or 'test' in self.name:
+            return False
 
-    if 'spam' in name:
-        return None
+        if self._validate_more_consonne(
+                self.name) or self._validate_more_consonne(self.domain):
+            return False
 
-    if 'test' in name:
-        return None
+        if self._validate_more_vowel(self.name) or self._validate_more_vowel(
+                self.domain):
+            return False
 
-    return mail
+        if self._validate_more_number(self.name) or self._validate_more_number(
+                self.domain):
+            return False
+
+        return True

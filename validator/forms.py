@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from django import forms
 
-from validator.mail import validate_mail, extra_validate_mail_rules
+from validator.mail import (
+    MailValidator, InvalidFormat, DisposableDomain, PhisingDomain)
 
 
 class MailValidatorFormMixin(object):
@@ -15,14 +16,18 @@ class MailValidatorFormMixin(object):
         mail = cleaned_data.get(self.field_name)
 
         if mail:
-            mail = mail.lower()
             message = u"Cette adresse email n'est pas valide"
 
-            if not validate_mail(mail):
+            try:
+                mail = MailValidator(mail.lower())
+            except (InvalidFormat, DisposableDomain, PhisingDomain):
+                raise forms.ValidationError({self.field_name: message})
+
+            if not mail.validate_mail():
                 raise forms.ValidationError({self.field_name: message})
 
             if self.extra_validate:
-                if not extra_validate_mail_rules(mail):
+                if not mail.extra_validate_mail_rules():
                     raise forms.ValidationError({self.field_name: message})
 
         return cleaned_data
