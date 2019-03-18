@@ -11,6 +11,6 @@ PHISHING_DOMAINS = [
     'hotmaol.com', 'hotmaol.fr',  'hotmaio.fr', 'htomail.com', 'htomail.fr',
     'orage.fr', 'oange.fr', 'orane.fr', 'oranger.fr', 'orang.fr', 'prange.fr',
     'yahou.fr', 'yaoo.fr', 'yaho.fr', 'yaou.fr', 'yahho.fr', 'yahoo.gr',
-    'lapose.net', 'lapote.net', 'laposte.fr', 'laposte.com' 'wanado.fr',
-    'wannado.fr', 'wannadoo.fr', 'sfr.gr', 'oulook.fr', 'outlok.fr',
-    'outlouk.fr', 'oulook.com', 'outlouk.com', 'outlook.xom', 'outlook.gr']
+    'lapose.net', 'lapote.net', 'wanado.fr', 'wannado.fr', 'wannadoo.fr', 
+    'sfr.gr', 'oulook.fr', 'outlok.fr', 'outlouk.fr', 'oulook.com', 'outlouk.com',
+    'outlook.xom', 'outlook.gr']
