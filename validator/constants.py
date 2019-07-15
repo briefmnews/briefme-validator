@@ -3,7 +3,7 @@ DISPOSABLE_EMAIL_DOMAINS = [
     'armyspy.com', 'cuvox.de', 'dayrep.com', 'jetable.org',
     'mail-temporaire.fr', 'maildrop.cc', 'mailinator.com', 'trashmail.com',
     'yopmail.com', 'yopmail.fr', 'jourrapide.com', 'gustr.com', 'teleworm.us',
-    'fleckens.hu', 'rhyta.com', 'superrito.com', 'einrot.com']
+    'fleckens.hu', 'rhyta.com', 'superrito.com', 'einrot.com', 'mailboxy.fun']
 PHISHING_DOMAINS = [
     'gmaul.com', 'gmil.com', 'gmai.com', 'gmal.com', 'gamil.com', 'gamail.com',
     'homail.fr', 'hotmai.fr', 'hotmil.com', 'hotmal.fr', 'hotmal.com',
