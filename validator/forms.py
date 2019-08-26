@@ -16,7 +16,7 @@ class MailValidatorFormMixin(object):
         mail = cleaned_data.get(self.field_name)
 
         if mail:
-            message = u"Cette adresse email n'est pas valide"
+            message = "Cette adresse email n'est pas valide"
 
             try:
                 mail = MailValidator(mail.lower())
