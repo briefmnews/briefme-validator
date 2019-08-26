@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 import re
 
-from dns.resolver import (
-    query, Timeout, NXDOMAIN, YXDOMAIN, NoAnswer, NoNameservers)
+from dns.resolver import (query, Timeout, NXDOMAIN, YXDOMAIN, NoAnswer, NoNameservers)
 
 from validator.constants import DISPOSABLE_EMAIL_DOMAINS, PHISHING_DOMAINS
 
@@ -87,16 +86,15 @@ class MailValidator(object):
         if len(self.name) < 5 or 'spam' in self.name or 'test' in self.name:
             return False
 
-        if self._validate_more_consonne(
-                self.name) or self._validate_more_consonne(self.domain):
+        if self._validate_more_consonne(self.name) or self._validate_more_consonne(self.domain):
             return False
 
-        if self._validate_more_vowel(self.name) or self._validate_more_vowel(
-                self.domain):
+        if self._validate_more_vowel(self.name) or self._validate_more_vowel(self.domain):
             return False
 
-        if self._validate_more_number(self.name) or self._validate_more_number(
-                self.domain):
+        if self._validate_more_number(self.name) or self._validate_more_number(self.domain):
+            return False
+
             return False
 
         return True
