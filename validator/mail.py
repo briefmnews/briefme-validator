@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import re
 
-from dns.resolver import (query, Timeout, NXDOMAIN, YXDOMAIN, NoAnswer, NoNameservers)
+from dns.resolver import query, Timeout, NXDOMAIN, YXDOMAIN, NoAnswer, NoNameservers
 
 from validator.constants import DISPOSABLE_EMAIL_DOMAINS, PHISHING_DOMAINS
 
@@ -20,6 +20,7 @@ class PhisingDomain(Exception):
 
 class MailValidator(object):
     """To validate mail format"""
+
     def __init__(self, mail):
         """To validate the mail validator class.
 
@@ -30,33 +31,32 @@ class MailValidator(object):
         @raise DisposableDomain: The mail is disposable
         @raise PhisingDomain: The mail is a phising domain
         """
-        self.name = mail.split('@')[0]
-        self.domain = mail.split('@', 1)[-1]
+        self.name = mail.split("@")[0]
+        self.domain = mail.split("@", 1)[-1]
 
-        if '@' in self.domain:
-            raise InvalidFormat('The format of the mail is not valid')
+        if "@" in self.domain:
+            raise InvalidFormat("The format of the mail is not valid")
 
-        if self.name in ('postmaster', 'abuse'):
-            raise InvalidFormat('A postmaster or an abuse mail is not valid')
+        if self.name in ("postmaster", "abuse"):
+            raise InvalidFormat("A postmaster or an abuse mail is not valid")
 
         if self.domain in DISPOSABLE_EMAIL_DOMAINS:
-            raise DisposableDomain('Disposable mail is not authorized')
+            raise DisposableDomain("Disposable mail is not authorized")
 
         if self.domain in PHISHING_DOMAINS:
-            raise PhisingDomain('Seems a phising domain')
+            raise PhisingDomain("Seems a phising domain")
 
     @staticmethod
     def _validate_more_consonne(word):
-        return bool(
-            re.search('[bcdfghjklmnpqrstvwxyz]{5}', word, re.IGNORECASE))
+        return bool(re.search("[bcdfghjklmnpqrstvwxyz]{5}", word, re.IGNORECASE))
 
     @staticmethod
     def _validate_more_vowel(word):
-        return bool(re.search('[aeiouy]{3}', word, re.IGNORECASE))
+        return bool(re.search("[aeiouy]{3}", word, re.IGNORECASE))
 
     @staticmethod
     def _validate_more_number(word):
-        return bool(re.search('[0-9]{5}', word))
+        return bool(re.search("[0-9]{5}", word))
 
     @staticmethod
     def _validate_special_char(word):
@@ -72,7 +72,7 @@ class MailValidator(object):
         @rtype : str
         """
         try:
-            query(self.domain, 'MX')
+            query(self.domain, "MX")
         except (Timeout, NXDOMAIN, YXDOMAIN, NoAnswer, NoNameservers):
             return False
 
@@ -87,19 +87,27 @@ class MailValidator(object):
         @return: The mail
         @rtype : str
         """
-        if len(self.name) < 5 or 'spam' in self.name or 'test' in self.name:
+        if len(self.name) < 5 or "spam" in self.name or "test" in self.name:
             return False
 
-        if self._validate_more_consonne(self.name) or self._validate_more_consonne(self.domain):
+        if self._validate_more_consonne(self.name) or self._validate_more_consonne(
+            self.domain
+        ):
             return False
 
-        if self._validate_more_vowel(self.name) or self._validate_more_vowel(self.domain):
+        if self._validate_more_vowel(self.name) or self._validate_more_vowel(
+            self.domain
+        ):
             return False
 
-        if self._validate_more_number(self.name) or self._validate_more_number(self.domain):
+        if self._validate_more_number(self.name) or self._validate_more_number(
+            self.domain
+        ):
             return False
 
-        if self._validate_special_char(self.name) or self._validate_special_char(self.domain):
+        if self._validate_special_char(self.name) or self._validate_special_char(
+            self.domain
+        ):
             return False
 
         return True

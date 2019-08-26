@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from django import forms
 
-from validator.mail import (
-    MailValidator, InvalidFormat, DisposableDomain, PhisingDomain)
+from validator.mail import MailValidator, InvalidFormat, DisposableDomain, PhisingDomain
 
 
 class MailValidatorFormMixin(object):
     """An mixin to validate """
-    field_name = 'email'
+
+    field_name = "email"
     extra_validate = False
 
     def clean(self):
