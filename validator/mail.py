@@ -58,6 +58,10 @@ class MailValidator(object):
     def _validate_more_number(word):
         return bool(re.search('[0-9]{5}', word))
 
+    @staticmethod
+    def _validate_special_char(word):
+        return bool(re.search(r"\*\*+", word))
+
     def validate_mail(self):
         """To validate the mail if the mail is invalid the return value is none.
 
@@ -95,6 +99,7 @@ class MailValidator(object):
         if self._validate_more_number(self.name) or self._validate_more_number(self.domain):
             return False
 
+        if self._validate_special_char(self.name) or self._validate_special_char(self.domain):
             return False
 
         return True
