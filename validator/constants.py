@@ -14,4 +14,4 @@ PHISHING_DOMAINS = [
     'yahou.fr', 'yaoo.fr', 'yaho.fr', 'yaou.fr', 'yahho.fr', 'yahoo.gr',
     'lapose.net', 'lapote.net', 'wanado.fr', 'wannado.fr', 'wannadoo.fr', 
     'sfr.gr', 'oulook.fr', 'outlok.fr', 'outlouk.fr', 'oulook.com', 'outlouk.com',
-    'outlook.xom', 'outlook.gr', 'gmail.cm', 'gmail.co', 'gmaol.com']
+    'outlook.xom', 'outlook.gr', 'gmail.cm', 'gmail.co', 'gmaol.com', 'gmail.con']
