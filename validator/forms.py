@@ -8,7 +8,7 @@ class MailValidatorFormMixin(object):
     """An mixin to validate """
 
     field_name = "email"
-    extra_validate = True
+    extra_validate = False
 
     def clean(self):
         """Check the mail and extra validate rules"""
