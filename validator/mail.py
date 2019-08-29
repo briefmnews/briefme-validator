@@ -52,15 +52,20 @@ class MailValidator(object):
 
     @staticmethod
     def _validate_more_vowel(word):
-        return bool(re.search("[aeiouy]{3}", word, re.IGNORECASE))
+        return bool(re.search("[aeiouy]{5}", word, re.IGNORECASE))
 
     @staticmethod
     def _validate_more_number(word):
-        return bool(re.search("[0-9]{5}", word))
+        return bool(re.search("[0-9]{6}", word))
 
     @staticmethod
     def _validate_special_char(word):
-        return bool(re.search(r"\*\*+", word))
+        if re.search(r"[*]{2}", word):
+            return True
+        if re.search(r"[+]{2}", word):
+            return True
+
+        return False
 
     def validate_mail(self):
         """To validate the mail if the mail is invalid the return value is none.

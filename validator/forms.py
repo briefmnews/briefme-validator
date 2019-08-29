@@ -8,26 +8,26 @@ class MailValidatorFormMixin(object):
     """An mixin to validate """
 
     field_name = "email"
-    extra_validate = False
+    extra_validate = True
 
     def clean(self):
         """Check the mail and extra validate rules"""
         cleaned_data = super(MailValidatorFormMixin, self).clean()
-        mail = cleaned_data.get(self.field_name)
+        email = cleaned_data.get(self.field_name)
 
-        if mail:
+        if email:
             message = "Cette adresse email n'est pas valide"
 
             try:
-                mail = MailValidator(mail.lower())
+                email = MailValidator(email)
             except (InvalidFormat, DisposableDomain, PhisingDomain):
                 raise forms.ValidationError({self.field_name: message})
 
-            if not mail.validate_mail():
+            if not email.validate_mail():
                 raise forms.ValidationError({self.field_name: message})
 
             if self.extra_validate:
-                if not mail.extra_validate_mail_rules():
+                if not email.extra_validate_mail_rules():
                     raise forms.ValidationError({self.field_name: message})
 
         return cleaned_data
