@@ -6,7 +6,7 @@ Briefme Validator
 This is an email validator to avoid phishing and mistakes made by end-users while
 typing in forms.
 
-##Usage
+## Usage
 Once installed, you need to import adn call the mixin `MailValidatorFormMixin` whenever 
 you need to check ofr phishing and mistakes in email addresses.
 Here is an usage example in a Django project:
