@@ -48,7 +48,7 @@ class MailValidator(object):
 
     @staticmethod
     def _validate_more_consonne(word):
-        return bool(re.search("[bcdfghjklmnpqrstvwxyz]{5}", word, re.IGNORECASE))
+        return bool(re.search("[bcdfghjklmnpqrstvwxz]{5}", word, re.IGNORECASE))
 
     @staticmethod
     def _validate_more_vowel(word):
