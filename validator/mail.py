@@ -56,7 +56,7 @@ class MailValidator(object):
 
     @staticmethod
     def _validate_more_number(word):
-        return bool(re.search("[0-9]{6}", word))
+        return bool(re.search("[0-9]{7}", word))
 
     @staticmethod
     def _validate_special_char(word):

@@ -22,6 +22,7 @@ class TestMailValidatorFormMixin:
         "ttttoto@gmail.com",
         "uuuuvoila@yahoo.fr",
         "tom75000@msn.com",
+        "uai750000@msn.com",
         "john.doe@hotmail.co.uk",
     ]
 
@@ -51,7 +52,7 @@ class TestMailValidatorFormMixin:
         "iiiii@gmail.com",
         "spam@gmail.fr",
         "test@gmail.eu",
-        "maya765437@wanadoo.fr",
+        "maya7654378@wanadoo.fr",
         "john++doe@gmail.com",
     ]
 
