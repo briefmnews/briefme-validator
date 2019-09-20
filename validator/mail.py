@@ -92,7 +92,7 @@ class MailValidator(object):
         @return: The mail
         @rtype : str
         """
-        if len(self.name) < 2 or "spam" in self.name or "test" in self.name:
+        if len(self.name) < 2 or "spam" in self.name:
             return False
 
         if self._validate_more_consonne(self.name) or self._validate_more_consonne(
