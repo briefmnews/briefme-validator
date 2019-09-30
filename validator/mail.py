@@ -64,6 +64,8 @@ class MailValidator(object):
             return True
         if re.search(r"[+]{2}", word):
             return True
+        if re.search(r"[']+", word):
+            return True
 
         return False
 

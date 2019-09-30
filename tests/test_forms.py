@@ -24,6 +24,7 @@ class TestMailValidatorFormMixin:
         "tom75000@msn.com",
         "uai750000@msn.com",
         "john.doe@hotmail.co.uk",
+        "test@gmail.com",
     ]
 
     DISPOSABLE_DOMAIN_EMAIL_LIST = [
@@ -51,9 +52,11 @@ class TestMailValidatorFormMixin:
         "three***starsinarow@gmail.com",
         "iiiii@gmail.com",
         "spam@gmail.fr",
-        "test@gmail.eu",
         "maya76543789@wanadoo.fr",
         "john++doe@gmail.com",
+        "emailwith'apostrophe@gmail.com",
+        "emailwith''apostrophe@gmail.com",
+        "email'with'apostrophe@gmail.com",
     ]
 
     VALIDATION_ERROR_MESSAGE = "Cette adresse email n'est pas valide"
