@@ -18,6 +18,7 @@ DISPOSABLE_EMAIL_DOMAINS = [
     "superrito.com",
     "einrot.com",
     "mailboxy.fun",
+    "qq.com",
 ]
 PHISHING_DOMAINS = [
     "gmaul.com",
