@@ -1,9 +1,13 @@
-# -*- coding: utf-8 -*-
 import re
 
 from dns.resolver import query, Timeout, NXDOMAIN, YXDOMAIN, NoAnswer, NoNameservers
 
 from validator.constants import DISPOSABLE_EMAIL_DOMAINS, PHISHING_DOMAINS
+from validator.settings import (
+    MAX_CONSONANTS_IN_A_ROW,
+    MAX_VOWELS_IN_A_ROW,
+    MAX_NUMBERS_IN_A_ROW,
+)
 
 
 class InvalidFormat(Exception):
@@ -48,15 +52,23 @@ class MailValidator(object):
 
     @staticmethod
     def _validate_more_consonne(word):
-        return bool(re.search("[bcdfghjklmnpqrstvwxz]{5}", word, re.IGNORECASE))
+        return bool(
+            re.search(
+                f"[bcdfghjklmnpqrstvwxz]{{{MAX_CONSONANTS_IN_A_ROW}}}",
+                word,
+                re.IGNORECASE,
+            )
+        )
 
     @staticmethod
     def _validate_more_vowel(word):
-        return bool(re.search("[aeiouy]{5}", word, re.IGNORECASE))
+        return bool(
+            re.search(f"[aeiouy]{{{MAX_VOWELS_IN_A_ROW}}}", word, re.IGNORECASE)
+        )
 
     @staticmethod
     def _validate_more_number(word):
-        return bool(re.search("[0-9]{8}", word))
+        return bool(re.search(f"[0-9]{{{MAX_NUMBERS_IN_A_ROW}}}", word))
 
     @staticmethod
     def _validate_special_char(word):
