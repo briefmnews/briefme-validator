@@ -1,3 +1,5 @@
+from validator.settings import *
+
 SECRET_KEY = "dump-secret-key"
 
 INSTALLED_APPS = (
