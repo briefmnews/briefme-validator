@@ -8,11 +8,20 @@ typing in forms.
 
 ## Usage
 Once installed, you need to import adn call the mixin `MailValidatorFormMixin` whenever 
-you need to check ofr phishing and mistakes in email addresses.
+you need to check for phishing and mistakes in email addresses.
 Here is an usage example in a Django project:
 ```python
 from validator.forms import MailValidatorFormMixin
 
 class HighSchoolForm(MailValidatorFormMixin, forms.ModelForm):
     ...
+```
+
+## Settings
+Here are the settings to set the maximum number of consonants, vowels and numbers in a row with their default values thah could 
+be overriden:
+```python
+BRIEFME_VALIDATOR_MAX_CONSONANTS_IN_A_ROW = 5
+BRIEFME_VALIDATOR_MAX_VOWELS_IN_A_ROW = 5
+BRIEFME_VALIDATOR_MAX_NUMBERS_IN_A_ROW = 8
 ```
