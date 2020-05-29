@@ -82,3 +82,6 @@ PHISHING_DOMAINS = [
     "gmaol.com",
     "gmail.con",
 ]
+BANNED_EMAIL_ADDRESSES = [
+    "achraf.taarabit@hotmail.fr"
+]

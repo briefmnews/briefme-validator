@@ -2,7 +2,7 @@ import re
 
 from dns.resolver import query, Timeout, NXDOMAIN, YXDOMAIN, NoAnswer, NoNameservers
 
-from validator.constants import DISPOSABLE_EMAIL_DOMAINS, PHISHING_DOMAINS
+from validator.constants import BANNED_EMAIL_ADDRESSES, DISPOSABLE_EMAIL_DOMAINS, PHISHING_DOMAINS
 from validator.settings import (
     MAX_CONSONANTS_IN_A_ROW,
     MAX_VOWELS_IN_A_ROW,
@@ -19,6 +19,10 @@ class DisposableDomain(Exception):
 
 
 class PhisingDomain(Exception):
+    pass
+
+
+class BannedEmailAddress(Exception):
     pass
 
 
@@ -49,6 +53,9 @@ class MailValidator(object):
 
         if self.domain in PHISHING_DOMAINS:
             raise PhisingDomain("Seems a phising domain")
+
+        if mail.lower() in BANNED_EMAIL_ADDRESSES:
+            raise BannedEmailAddress("email addresses is banned")
 
     @staticmethod
     def _validate_more_consonne(word):
