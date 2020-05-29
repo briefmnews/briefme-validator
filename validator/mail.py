@@ -2,7 +2,11 @@ import re
 
 from dns.resolver import query, Timeout, NXDOMAIN, YXDOMAIN, NoAnswer, NoNameservers
 
-from validator.constants import BANNED_EMAIL_ADDRESSES, DISPOSABLE_EMAIL_DOMAINS, PHISHING_DOMAINS
+from validator.constants import (
+    BANNED_EMAIL_ADDRESSES,
+    DISPOSABLE_EMAIL_DOMAINS,
+    PHISHING_DOMAINS,
+)
 from validator.settings import (
     MAX_CONSONANTS_IN_A_ROW,
     MAX_VOWELS_IN_A_ROW,

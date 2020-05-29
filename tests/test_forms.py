@@ -2,8 +2,17 @@ import pytest
 
 from django import forms
 from validator.forms import MailValidatorFormMixin
-from validator.mail import DisposableDomain, InvalidFormat, PhisingDomain, BannedEmailAddress
-from validator.constants import BANNED_EMAIL_ADDRESSES, DISPOSABLE_EMAIL_DOMAINS, PHISHING_DOMAINS
+from validator.mail import (
+    DisposableDomain,
+    InvalidFormat,
+    PhisingDomain,
+    BannedEmailAddress,
+)
+from validator.constants import (
+    BANNED_EMAIL_ADDRESSES,
+    DISPOSABLE_EMAIL_DOMAINS,
+    PHISHING_DOMAINS,
+)
 
 pytestmark = pytest.mark.django_db(transaction=True)
 
