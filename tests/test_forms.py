@@ -2,8 +2,8 @@ import pytest
 
 from django import forms
 from validator.forms import MailValidatorFormMixin
-from validator.mail import DisposableDomain, InvalidFormat, PhisingDomain
-from validator.constants import DISPOSABLE_EMAIL_DOMAINS, PHISHING_DOMAINS
+from validator.mail import DisposableDomain, InvalidFormat, PhisingDomain, BannedEmailAddress
+from validator.constants import BANNED_EMAIL_ADDRESSES, DISPOSABLE_EMAIL_DOMAINS, PHISHING_DOMAINS
 
 pytestmark = pytest.mark.django_db(transaction=True)
 
@@ -40,11 +40,16 @@ class TestMailValidatorFormMixin:
         {"email": "john.doe" + domain, "exception": PhisingDomain}
         for domain in PHISHING_DOMAINS
     ]
+    BANNED_EMAIL_ADDRESSES_LIST = [
+        {"email": email, "exception": BannedEmailAddress}
+        for email in BANNED_EMAIL_ADDRESSES
+    ]
 
     INVALID_DISPOSABLE_PHISHING_EMAIL_LIST = (
         INVALID_FORMAT_EMAIL_LIST
         + DISPOSABLE_DOMAIN_EMAIL_LIST
         + PHISHING_DOMAIN_EMAIL_LIST
+        + BANNED_EMAIL_ADDRESSES_LIST
     )
 
     EXTRA_VALIDATE_EMAIL_LIST = [
