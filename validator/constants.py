@@ -1,8 +1,10 @@
-# -*- coding: utf-8 -*-
 DISPOSABLE_EMAIL_DOMAINS = [
     "armyspy.com",
+    "bcaoo.com",
     "cuvox.de",
     "dayrep.com",
+    "eoopy.com",
+    "idxue.com",
     "jetable.org",
     "mail-temporaire.fr",
     "maildrop.cc",
@@ -16,6 +18,8 @@ DISPOSABLE_EMAIL_DOMAINS = [
     "fleckens.hu",
     "rhyta.com",
     "superrito.com",
+    "urhen.com",
+    "uuluu.net",
     "einrot.com",
     "mailboxy.fun",
     "qq.com",
@@ -23,6 +27,7 @@ DISPOSABLE_EMAIL_DOMAINS = [
 PHISHING_DOMAINS = [
     "gmaul.com",
     "gmil.com",
+    "gail.com",
     "gmai.com",
     "gmal.com",
     "gamil.com",
