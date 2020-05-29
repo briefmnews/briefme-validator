@@ -45,7 +45,7 @@ class MailValidator(object):
         if "@" in self.domain:
             raise InvalidFormat("The format of the mail is not valid")
 
-        if self.name in ("postmaster", "abuse"):
+        if self.name in ("postmaster", "abuse", "achraf.taarabit"):
             raise InvalidFormat("A postmaster or an abuse mail is not valid")
 
         if self.domain in DISPOSABLE_EMAIL_DOMAINS:
