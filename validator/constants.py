@@ -23,6 +23,18 @@ DISPOSABLE_EMAIL_DOMAINS = [
     "einrot.com",
     "mailboxy.fun",
     "qq.com",
+    "tempr.email",
+    "freetmail.net",
+    "best-mail.net",
+    "businessagent.email",
+    "dreamcatcher.email",
+    "hotelnextmail.com",
+    "mini-mail.net",
+    "smart-mail.info",
+    "click-mail.net",
+    "quick-mail.online",
+    "mail4.online",
+    "newtmail.com",
 ]
 PHISHING_DOMAINS = [
     "gmaul.com",
