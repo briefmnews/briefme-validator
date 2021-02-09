@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="briefme-validator",
-    version="0.1.12",
+    version="0.1.13",
     description="An email validator.",
     long_description="""A simple validator, check mail for example.""",
     keywords="dns, email, validator",
