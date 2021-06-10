@@ -1,2 +1,2 @@
 dnspython3==1.15.0
-Django==2.2.18
+Django==2.2.24
