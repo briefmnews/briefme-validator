@@ -22,7 +22,7 @@ setup(
     ],
     packages=find_packages(),
     include_package_data=False,
-    install_requires=["dnspython3", "Django>=2.0"],
+    install_requires=["dnspython3", "Django>=3.0"],
     entry_points={"console_scripts": []},
     zip_safe=False,
 )
