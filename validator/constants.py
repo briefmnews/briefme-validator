@@ -111,5 +111,6 @@ PHISHING_DOMAINS = [
     "clu-internet.fr",
     "lappste.net",
     "iclooud.fr",
+    "hotmain.com",
 ]
 BANNED_EMAIL_ADDRESSES = ["achraf.taarabit@hotmail.fr"]
