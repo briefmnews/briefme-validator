@@ -1,6 +1,6 @@
 import re
 
-from dns.resolver import query, Timeout, NXDOMAIN, YXDOMAIN, NoAnswer, NoNameservers
+from dns.resolver import resolve, Timeout, NXDOMAIN, YXDOMAIN, NoAnswer, NoNameservers
 
 from validator.constants import (
     BANNED_EMAIL_ADDRESSES,
@@ -102,7 +102,7 @@ class MailValidator(object):
         @rtype : str
         """
         try:
-            query(self.domain, "MX")
+            resolve(self.domain, "MX")
         except (Timeout, NXDOMAIN, YXDOMAIN, NoAnswer, NoNameservers):
             return False
 
