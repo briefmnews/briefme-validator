@@ -4,3 +4,4 @@
 .pytest_cache
 *__pycache__*
 htmlcov
+briefme_validator.egg-info
