@@ -1,5 +1,6 @@
 from django import forms
 from django.conf import settings
+from django.utils.safestring import mark_safe
 
 from validator.mail import MailValidator, InvalidFormat, DisposableDomain, PhisingDomain
 
@@ -16,7 +17,7 @@ class MailValidatorFormMixin(object):
         email = cleaned_data.get(self.field_name)
 
         if email:
-            message = f"Cette adresse e-mail ne semble pas valide. Nous vous invitons à la corriger. Une question&nbsp;? <a href='{settings.BRIEFME_VALIDATOR_CONTACT_URL}'>Contactez-nous.</a>"
+            message = mark_safe(f"Cette adresse e-mail ne semble pas valide. Nous vous invitons à la corriger. Une question&nbsp;? <a href='{settings.BRIEFME_VALIDATOR_CONTACT_URL}'>Contactez-nous.</a>")
 
             try:
                 email = MailValidator(email)
