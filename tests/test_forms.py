@@ -1,6 +1,7 @@
 import pytest
 
 from django import forms
+from django.conf import settings
 from validator.forms import MailValidatorFormMixin
 from validator.mail import (
     DisposableDomain,
@@ -73,7 +74,7 @@ class TestMailValidatorFormMixin:
         "email'with'apostrophe@gmail.com",
     ]
 
-    VALIDATION_ERROR_MESSAGE = "Cette adresse email n'est pas valide"
+    VALIDATION_ERROR_MESSAGE = f"Cette adresse e-mail ne semble pas valide. Nous vous invitons à la corriger. Une question&nbsp;?"
 
     class DummyFormView(MailValidatorFormMixin, forms.Form):
         email = forms.EmailField()

@@ -6,4 +6,6 @@ INSTALLED_APPS = (
     "django.contrib.sessions",
 )
 
+BRIEFME_VALIDATOR_CONTACT_URL = "/contact/"
+
 DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3"}}
